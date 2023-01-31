@@ -1,0 +1,117 @@
+.contenedorPrincipal {
+    max-width: 75%;
+    display: grid;
+    grid-template-rows: auto;
+    position: relative;
+    margin: auto;
+    outline: auto;
+}
+
+header {
+    display: grid;
+    grid-template-rows: auto;
+    text-align: center;
+}
+
+.cajaBotones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+
+.botonHeader {
+    background-color: black;
+}
+
+.botonHeader:hover {
+    opacity: 50%;
+}
+
+h2 {
+    color: white;
+}
+
+
+
+.mainDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.nombrepj {
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.clasepj {
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    margin: auto;
+    margin-top: 5%;
+
+    text-align: center;
+}
+
+.razapj {
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    margin: auto;
+    margin-top: 5%;
+
+    text-align: center;
+}
+
+.statsDiv {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin: auto;
+    text-align: center;
+}
+
+.stat {
+    display: grid;
+    grid-template-rows: auto;
+    margin: auto;
+    width: 6em;
+    
+}
+
+.mitadMain {
+    display: grid;
+    grid-template-rows: auto;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.stats {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin: auto;
+    margin-top: -5%;
+    text-align: center;
+    
+    
+}
+
+.statsRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: auto;
+    text-align: center;
+}
+
+.titleStats {
+    margin: auto;
+}
+
+
+
+.divBoton {
+    margin: auto;
+    margin-top: 5%;
+
+}

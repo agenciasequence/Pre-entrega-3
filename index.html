@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Generador de Personajes de D&D</title>
+</head>
+<body>
+    <div class="contenedorPrincipal">
+    <header>
+        <div>
+        <h1>Generador de Personajes de D&D</h1>
+        </div>
+        <div class="cajaBotones">
+        <div class="botonHeader">
+            <h2>Crear personaje nuevo</h2>
+        </div>
+        <div class="botonHeader">
+            <h2>Ver lista de personajes creados</h2>
+        </div>
+    </div>
+        
+    </header>
+  
+    <main>
+        <div class="mainDiv">
+            <div class="mitadMain">
+                <div class="nombrepj">
+            <h5>Nombre del Personaje</h5>
+            <input id="nombre" name="nombre" type="text">
+                </div>
+                <div class="clasepj">
+                    <h5>Clase del Personaje</h5>
+                <select id="claseOpt" name="claseOpt" class="form-select" aria-label="Default select example">
+                <option selected>Elige la clase de tu personaje</option>
+                <option value="1">Bárbaro</option>
+                <option value="2">Guerrero</option>
+                <option value="3">Explorador</option>
+                <option value="4">Mago</option>
+                </select>
+
+                </div>
+                <div class="razapj">
+                    <h5>Raza del Personaje</h5>
+                    <select id="razaOpt" name="razaOpt" class="form-select" >
+                    <option selected>Elige la raza de tu personaje</option>
+                    <option value="1">Humano</option>
+                    <option value="2">Elfo</option>
+                    <option value="3">Enano</option>
+                    <option value="4">Semiorco</option>
+                    </select>
+                    </div>
+
+
+                <div class="statsDiv">
+
+                    <div class="titleStats"><h5>Elija una puntuación para cada stat</h5> </div>
+                    
+                    <div class="stats">  
+                    <div class="statsRow"> 
+                        <div class="stat">
+                            <label for="fuerzaOpt">Fuerza</label>
+                            <select id="fuerzaOpt" name="fuerzaOpt" class="form-select" >
+                                <option selected></option>
+                                <option value="1">8</option>
+                                <option value="2">9</option>
+                                <option value="3">10</option>
+                                <option value="4">11</option>
+                                <option value="5">12</option>
+                                <option value="6">13</option>
+                                <option value="7">14</option>
+                                <option value="8">15</option>
+                                </select>
+
+                        </div>
+                        <div class="stat">
+                            <label for="destrezaOpt">Destreza</label>
+                            <select id="destrezaOpt" name="destrezaOpt" class="form-select" >
+                                <option selected></option>
+                                <option value="1">8</option>
+                                <option value="2">9</option>
+                                <option value="3">10</option>
+                                <option value="4">11</option>
+                                <option value="5">12</option>
+                                <option value="6">13</option>
+                                <option value="7">14</option>
+                                <option value="8">15</option>
+                                </select>
+
+                        </div>
+                        <div class="stat">
+                            <label for="constitucionOpt">Constitución</label>
+                            <select id="constitucionOpt" name="constitucionOpt" class="form-select" >
+                                <option selected></option>
+                                <option value="1">8</option>
+                                <option value="2">9</option>
+                                <option value="3">10</option>
+                                <option value="4">11</option>
+                                <option value="5">12</option>
+                                <option value="6">13</option>
+                                <option value="7">14</option>
+                                <option value="8">15</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="statsRow">
+                        <div class="stat">
+                            <label for="inteligenciaOpt">Inteligencia</label>
+                            <select id="inteligenciaOpt" name="inteligenciaOpt" class="form-select" >
+                                <option selected></option>
+                                <option value="1">8</option>
+                                <option value="2">9</option>
+                                <option value="3">10</option>
+                                <option value="4">11</option>
+                                <option value="5">12</option>
+                                <option value="6">13</option>
+                                <option value="7">14</option>
+                                <option value="8">15</option>
+                                </select>
+
+                        </div>
+                        <div class="stat">
+                            <label for="sabiduriaaOpt">Sabiduría</label>
+                            <select id="sabiduriaOpt" name="sabiduriaOpt" class="form-select" >
+                                <option selected></option>
+                                <option value="1">8</option>
+                                <option value="2">9</option>
+                                <option value="3">10</option>
+                                <option value="4">11</option>
+                                <option value="5">12</option>
+                                <option value="6">13</option>
+                                <option value="7">14</option>
+                                <option value="8">15</option>
+                                </select>
+
+                        </div>
+                        <div class="stat">
+                            <label for="carismaOpt">Carisma</label>
+                            
+                            <select id="carismaOpt" name="carismaOpt" class="form-select" >
+                                <option selected></option>
+                                <option value="1">8</option>
+                                <option value="2">9</option>
+                                <option value="3">10</option>
+                                <option value="4">11</option>
+                                <option value="5">12</option>
+                                <option value="6">13</option>
+                                <option value="7">14</option>
+                                <option value="8">15</option>
+                                </select>
+                            
+                        </div>
+                    </div>
+                    </div>
+                        
+                        
+                    </div>
+                    <div class="divBoton"><input id= "submit" class="btn btn-primary" type="submit" value="Generar Personaje"></div>
+
+        </div>
+        <div class="mitadMain">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
