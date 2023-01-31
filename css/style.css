@@ -58,7 +58,7 @@ h2 {
 
 .razapj {
     display:grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto;
     margin: auto;
     margin-top: 5%;
 
@@ -115,3 +115,15 @@ h2 {
     margin-top: 5%;
 
 }
+
+.hojaMain {
+    margin:auto;
+    margin-top: 5%;
+    max-width: 100%;
+}
+
+.datoHoja {
+    white-space: pre-wrap;
+    text-align: left;
+}
+

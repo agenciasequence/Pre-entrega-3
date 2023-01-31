@@ -32,6 +32,49 @@ function importarPjs (){
     let pjsRecuperados = localStorage.getItem("personajes")
 }
 
+//FUNCIÓN PARA GENERAR HOJA DE PERSONAJE
+
+
+
+function crearHoja (nombre, raza, clase, ataqEspada, ataqArco, dañEspada, dañArco, fuerza, destreza, constitucion, inteligencia, sabiduria, carisma) {
+    presentación = "Su personaje se llama " + nombre + " y es un " + clase + " " + raza
+    ataques = "Modificador de ataque con espada: " + ataqEspada + "\n" + "Modificador de ataque con arco: " + ataqArco
+    daños = "Modificador de daño con espada: " + dañEspada + "\n" + "Modificador de daño con arco: " + dañArco
+    rstats = "Sus stats son:" + "\n" + "Fuerza: " + fuerza + "\n" + "Destreza: " + destreza + "\n" + "Constitución: " + constitucion + "\n" + "Inteligencia: " + inteligencia + "\n" + "Sabiduría: " + sabiduria + "\n" + "Carisma: " + carisma
+
+    let containerPresentacion = document.getElementById("presentacionHoja")
+    let containerAtaques = document.getElementById("ataquesHoja")
+    let containerDaños = document.getElementById("dañosHoja")
+    let containerStats = document.getElementById("statsHoja")
+
+    if (containerPresentacion.firstChild){
+
+    containerPresentacion.removeChild(containerPresentacion.firstChild)
+    containerAtaques.removeChild(containerAtaques.firstChild)
+    containerDaños.removeChild(containerDaños.firstChild)
+    containerStats.removeChild(containerStats.firstChild)
+    }
+   
+    renderPresentacion = document.createElement("h5")
+    renderPresentacion.innerHTML = presentación
+    renderAtaques = document.createElement("h6")
+    renderAtaques.innerHTML = ataques
+    renderDaños = document.createElement("h6")
+    renderDaños.innerHTML = daños
+    renderStats = document.createElement("h6")
+    renderStats.innerHTML = rstats
+
+    
+    
+    
+
+    containerPresentacion.append(renderPresentacion)
+    containerAtaques.append(renderAtaques)
+    containerDaños.append(renderDaños)
+    containerStats.append(renderStats)
+}
+
+
 //PERSONAJES PRE CARGADOS
 
 const Jan = new personaje("Jan", "Humano", "Bárbaro",16,14,16,10,10,12,3,1)
@@ -49,8 +92,51 @@ cargarPjs ()
 let boton = document.getElementById("submit")
 boton.addEventListener("click", crearpj)
 
+function statRaza(){
+
+    let selRazaCount = document.getElementById("razaOpt").childElementCount
+
+    if (selRazaCount > 2){
+        let containerRaza = document.getElementById("razapj")
+        containerRaza.removeChild(containerRaza.lastChild)
+    }
+
+    let selRaza = document.getElementById("razaOpt").value
+    if (selRaza == 1){
+    let containerRaza = document.getElementById("razapj")
+    renderHum = document.createElement("p")
+    renderHum.innerHTML = "+1 a todas las stats"
+
+    containerRaza.append(renderHum)
+    }
+    if (selRaza == 2){
+    let containerRaza = document.getElementById("razapj")
+    renderHum = document.createElement("p")
+    renderHum.innerHTML = "+2 a Destreza y +1 a Inteligencia"
+
+    containerRaza.append(renderHum)
+    }
+    if (selRaza == 3){
+    let containerRaza = document.getElementById("razapj")
+    renderHum = document.createElement("p")
+    renderHum.innerHTML = "+2 a Constitución y +1 a Sabiduría"
+
+    containerRaza.append(renderHum)
+    }
+    if (selRaza == 4){
+    let containerRaza = document.getElementById("razapj")
+    renderHum = document.createElement("p")
+    renderHum.innerHTML = "+2 a Fuerza y +1 a Constitución"
+
+    containerRaza.append(renderHum)
+    }
+
+}
+
+
+
 function crearpj() {
-    let nombre = document.getElementById('nombre').value
+    let nombrePj = document.getElementById('nombre').value
     let claseVal = document.getElementById('claseOpt')
     let clasePersonaje = claseVal.options[claseVal.selectedIndex].text
     let razaVal = document.getElementById('razaOpt')
@@ -96,13 +182,20 @@ function crearpj() {
     }
 
     
-    let modFuerza = (fuerzaPersonaje - 10) / 2
-    let modDestreza = (destrezaPersonaje - 10) / 2
+    let preModFuerza = (parseInt(fuerzaPersonaje) - 10) / 2
+    let modFuerza = Math.floor(preModFuerza)
+    let preModDestreza = (parseInt(destrezaPersonaje) - 10) / 2
+    let modDestreza = Math.floor(preModDestreza)
+    let ataqueEspada = modFuerza + 2
+    let ataqueArco = modDestreza + 2
+    let dañoEspada = "dado de 8 + " + modFuerza
+    let dañoArco = "dado de 8 + " + modDestreza
 
-    const pjnuevo = new personaje (nombre, razaPersonaje, clasePersonaje, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje, modFuerza, modDestreza)
+    const pjnuevo = new personaje (nombrePj, razaPersonaje, clasePersonaje, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje, modFuerza, modDestreza)
     personajesNombres.push(pjnuevo.nombre)
     personajes.push(pjnuevo)
     cargarPjs ()
+    crearHoja (nombrePj, razaPersonaje, clasePersonaje, ataqueEspada, ataqueArco, dañoEspada, dañoArco, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje)
 
     //console.log(nombre+"\n"+clasePersonaje+"\n"+razaPersonaje+"\n"+"fuerza: "+parseInt(fuerzaPersonaje)+"\n"+"destreza: "+parseInt(destrezaPersonaje)+"\n"+"constitución: "+parseInt(constitucionPersonaje)+"\n"+"inteligencia: "+parseInt(inteligenciaPersonaje)+"\n"+"sabiduria: "+parseInt(sabiduriaPersonaje)+"\n"+"carisma: "+parseInt(carismaPersonaje))
 }

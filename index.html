@@ -43,14 +43,14 @@
                 </select>
 
                 </div>
-                <div class="razapj">
+                <div id="razapj" class="razapj">
                     <h5>Raza del Personaje</h5>
-                    <select id="razaOpt" name="razaOpt" class="form-select" >
+                    <select id="razaOpt" name="razaOpt" class="form-select" onchange="statRaza()">
                     <option selected>Elige la raza de tu personaje</option>
-                    <option value="1">Humano</option>
-                    <option value="2">Elfo</option>
-                    <option value="3">Enano</option>
-                    <option value="4">Semiorco</option>
+                    <option id="hum" value="1">Humano</option>
+                    <option id="elf" value="2">Elfo</option>
+                    <option id="ena" value="3">Enano</option>
+                    <option id="sem" value="4">Semiorco</option>
                     </select>
                     </div>
 
@@ -161,7 +161,12 @@
                     <div class="divBoton"><input id= "submit" class="btn btn-primary" type="submit" value="Generar Personaje"></div>
 
         </div>
-        <div class="mitadMain">
+        <div id="hojaMain" class="mitadMain hojaMain">
+            <h3 class="datosTitle">Datos del Personaje</h3>
+            <div id="presentacionHoja" class="datoHoja"></div>
+            <div id="ataquesHoja" class="datoHoja"></div>
+            <div id="dañosHoja" class="datoHoja"></div>
+            <div id="statsHoja" class="datoHoja"></div>
             </div>
         </div>
     </main>
