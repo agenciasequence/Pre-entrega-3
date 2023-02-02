@@ -23,8 +23,8 @@ function personaje (nombre, raza, clase, fuerza, destreza, constitucion, intelig
 
 //CREAMOS FUNCIONES PARA CARGAR ARRAY E IMPORTARLO DEL STORAGE
 
-function cargarPjs (){
-    let pjsJSON = JSON.stringify(personajes)
+function cargarPjs (listapjs){
+    let pjsJSON = JSON.stringify(listapjs)
     localStorage.setItem("personajes", pjsJSON)
 }
 
@@ -90,11 +90,12 @@ const Esben = new personaje("Esben", "Enano", "Guerrero",8,16,14,16,12,12,-1,3)
 const personajesNombres = [Jan.nombre + " (pregenerado)", Korra.nombre + " (pregenerado)", Adelfos.nombre + " (pregenerado)", Esben.nombre + " (pregenerado)"]
 const personajes = [Jan, Korra, Adelfos, Esben]
 
+//CONTROLAMOS SI EXISTE LOCALSTORAGE, SI NO EXISTE LO CREAMOS
 
-if (localStorage.getItem("personajes") === null || localStorage.getItem("personajes") == personajes) {
-    cargarPjs ()
+if (localStorage.getItem("personajes") === null) {
+    cargarPjs (personajes)
 }
-
+    
 
 let boton = document.getElementById("botonGenerar")
 boton.addEventListener("click", crearpj)
@@ -202,21 +203,33 @@ function crearpj() {
     let dañoEspada = "dado de 8 + " + modFuerza
     let dañoArco = "dado de 8 + " + modDestreza
 
-    
-    if (localStorage.getItem("personajes") === null || localStorage.getItem("personajes") == personajes){
     const pjsRecuperados = JSON.parse(localStorage.getItem("personajes"))
-    personajes = pjsRecuperados.slice(0)
+    const pjsLocales = []
+    for (let i = 0; i < pjsRecuperados.length; i++) {
+        const pjnew = new personaje (pjsRecuperados[i].nombre, pjsRecuperados[i].raza, pjsRecuperados[i].clase, pjsRecuperados[i].fuerza, pjsRecuperados[i].destreza, pjsRecuperados[i].constitucion, pjsRecuperados[i].inteligencia, pjsRecuperados[i].sabiduria, pjsRecuperados[i].carisma, pjsRecuperados[i].modiFuerza, pjsRecuperados[i].modiDestreza)
+        pjsLocales.push(pjnew)
     }
+
+    
+
+    if (pjsLocales !== personajes){
+    
+    const pjnuevo = new personaje (nombrePj, razaPersonaje, clasePersonaje, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje, modFuerza, modDestreza)
+    
+    personajesNombres.push(pjnuevo.nombre)
+    pjsLocales.push(pjnuevo)
+    cargarPjs (pjsLocales)
+    crearHoja (nombrePj, razaPersonaje, clasePersonaje, ataqueEspada, ataqueArco, dañoEspada, dañoArco, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje)
+    }else {
     
     
     const pjnuevo = new personaje (nombrePj, razaPersonaje, clasePersonaje, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje, modFuerza, modDestreza)
     
     personajesNombres.push(pjnuevo.nombre)
     personajes.push(pjnuevo)
-    console.log(personajes)
-    cargarPjs ()
+    cargarPjs (personajes)
     crearHoja (nombrePj, razaPersonaje, clasePersonaje, ataqueEspada, ataqueArco, dañoEspada, dañoArco, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje)
-
-    //console.log(nombre+"\n"+clasePersonaje+"\n"+razaPersonaje+"\n"+"fuerza: "+parseInt(fuerzaPersonaje)+"\n"+"destreza: "+parseInt(destrezaPersonaje)+"\n"+"constitución: "+parseInt(constitucionPersonaje)+"\n"+"inteligencia: "+parseInt(inteligenciaPersonaje)+"\n"+"sabiduria: "+parseInt(sabiduriaPersonaje)+"\n"+"carisma: "+parseInt(carismaPersonaje))
+    }
+    
 }
 
