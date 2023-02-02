@@ -127,3 +127,7 @@ h2 {
     text-align: left;
 }
 
+a:link {
+text-decoration: none;
+}
+

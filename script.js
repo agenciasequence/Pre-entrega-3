@@ -30,6 +30,7 @@ function cargarPjs (){
 
 function importarPjs (){
     let pjsRecuperados = localStorage.getItem("personajes")
+    return pjsRecuperados
 }
 
 //FUNCIÓN PARA GENERAR HOJA DE PERSONAJE
@@ -75,6 +76,8 @@ function crearHoja (nombre, raza, clase, ataqEspada, ataqArco, dañEspada, dañA
 }
 
 
+
+
 //PERSONAJES PRE CARGADOS
 
 const Jan = new personaje("Jan", "Humano", "Bárbaro",16,14,16,10,10,12,3,1)
@@ -87,10 +90,18 @@ const Esben = new personaje("Esben", "Enano", "Guerrero",8,16,14,16,12,12,-1,3)
 const personajesNombres = [Jan.nombre + " (pregenerado)", Korra.nombre + " (pregenerado)", Adelfos.nombre + " (pregenerado)", Esben.nombre + " (pregenerado)"]
 const personajes = [Jan, Korra, Adelfos, Esben]
 
-cargarPjs ()
 
-let boton = document.getElementById("submit")
+if (localStorage.getItem("personajes") === null || localStorage.getItem("personajes") == personajes) {
+    cargarPjs ()
+}
+
+
+let boton = document.getElementById("botonGenerar")
 boton.addEventListener("click", crearpj)
+
+
+
+
 
 function statRaza(){
 
@@ -191,9 +202,18 @@ function crearpj() {
     let dañoEspada = "dado de 8 + " + modFuerza
     let dañoArco = "dado de 8 + " + modDestreza
 
+    
+    if (localStorage.getItem("personajes") === null || localStorage.getItem("personajes") == personajes){
+    const pjsRecuperados = JSON.parse(localStorage.getItem("personajes"))
+    personajes = pjsRecuperados.slice(0)
+    }
+    
+    
     const pjnuevo = new personaje (nombrePj, razaPersonaje, clasePersonaje, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje, modFuerza, modDestreza)
+    
     personajesNombres.push(pjnuevo.nombre)
     personajes.push(pjnuevo)
+    console.log(personajes)
     cargarPjs ()
     crearHoja (nombrePj, razaPersonaje, clasePersonaje, ataqueEspada, ataqueArco, dañoEspada, dañoArco, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje)
 
