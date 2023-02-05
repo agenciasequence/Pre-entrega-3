@@ -76,6 +76,25 @@ function crearHoja (nombre, raza, clase, ataqEspada, ataqArco, dañEspada, dañA
 }
 
 
+// FUNCIÓN PARA LA SIMULACIÓN DE ATAQUES
+
+/* function ataques (mod){
+    let salida= ""
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max) +1
+
+    }                     
+    for (let i = 1; i < 11; i++) {
+        salida = salida + "ataque " + i + ": " + (Math.floor(mod) + getRandomInt(8)) + "\n"
+    }
+    alert(salida)
+} */
+
+
+
+    
+    
+
 
 
 //PERSONAJES PRE CARGADOS
@@ -96,9 +115,11 @@ if (localStorage.getItem("personajes") === null) {
     cargarPjs (personajes)
 }
     
-
+let botonSword = document.getElementById("espada")
+let botonBow = document.getElementById("arco")
 let boton = document.getElementById("botonGenerar")
 boton.addEventListener("click", crearpj)
+
 
 
 
@@ -148,6 +169,9 @@ function statRaza(){
 
 
 function crearpj() {
+    
+    
+    
     let nombrePj = document.getElementById('nombre').value
     let claseVal = document.getElementById('claseOpt')
     let clasePersonaje = claseVal.options[claseVal.selectedIndex].text
@@ -220,6 +244,8 @@ function crearpj() {
     pjsLocales.push(pjnuevo)
     cargarPjs (pjsLocales)
     crearHoja (nombrePj, razaPersonaje, clasePersonaje, ataqueEspada, ataqueArco, dañoEspada, dañoArco, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje)
+    botonSword.addEventListener("click", function () {ataques(modFuerza)})
+    botonBow.addEventListener("click", function () {ataques(modDestreza)})
     }else {
     
     
@@ -229,7 +255,24 @@ function crearpj() {
     personajes.push(pjnuevo)
     cargarPjs (personajes)
     crearHoja (nombrePj, razaPersonaje, clasePersonaje, ataqueEspada, ataqueArco, dañoEspada, dañoArco, fuerzaPersonaje, destrezaPersonaje, constitucionPersonaje, inteligenciaPersonaje, sabiduriaPersonaje, carismaPersonaje)
+    botonSword.addEventListener("click", function () {ataques(modFuerza)})
+    botonBow.addEventListener("click", function () {ataques(modDestreza)})
     }
     
+    
+    //FUNCIÓN QUE SIMULA ATAQUES
+    
+    
+    function ataques (mod){
+        let salida= ""
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max) +1
+    
+        }                     
+        for (let i = 1; i < 11; i++) {
+            salida = salida + "ataque " + i + ": " + (Math.floor(mod) + getRandomInt(8)) + "\n"
+        }
+        alert(salida)
+    }
 }
 
